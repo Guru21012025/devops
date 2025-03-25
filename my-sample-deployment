@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-sample-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample1
+  template:
+    metadata:
+      labels:
+        app: sample
+    spec:
+      containers:
+      - name: my-container
+        image: sakthi21012025/my_repo:latest
+        ports:
+        - containerPort: 80  # Use port 80 for the container
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-image-service
+spec:
+  selector:
+    app: sample
+  ports:
+    - protocol: TCP
+      port: 80        # The port the service will expose externally
+      targetPort: 80   # The port inside the container
+  type: ClusterIP
