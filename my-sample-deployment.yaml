@@ -25,7 +25,7 @@ metadata:
   name: my-image-service
 spec:
   selector:
-    app: sample
+    app: sample1
   ports:
     - protocol: TCP
       port: 80        # The port the service will expose externally
